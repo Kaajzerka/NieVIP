@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<title>VIP Gołąb</title>
+<style>
+  html, body {
+    margin:0; padding:0; height:100%;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  body {
+    background-color: yellow;
+    animation: blinkYellow 1s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  @keyframes blinkYellow {
+    0% {background-color: #ffff00;}
+    100% {background-color: #fff700;}
+  }
+  .vip-text {
+    position: absolute;
+    font-size: 6rem;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 0 0 10px #fff700, 0 0 20px #ffd700;
+    user-select: none;
+    pointer-events: none;
+    animation: flyVip 8s linear infinite;
+  }
+  @keyframes flyVip {
+    0% {left: -30%; top: 10%;}
+    25% {left: 110%; top: 20%;}
+    50% {left: -30%; top: 50%;}
+    75% {left: 110%; top: 70%;}
+    100% {left: -30%; top: 10%;}
+  }
+  #buyBtn {
+    background: #ffea00;
+    border: 3px solid #b38f00;
+    padding: 20px 60px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ffe600;
+    z-index: 10;
+    margin-bottom: 10px;
+    user-select: none;
+  }
+  #miniText {
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: underline;
+  }
+  #miniText:hover {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<div class="vip-text">💎 VIP 💎</div>
+<div class="vip-text" style="animation-delay: 2.5s; font-size: 7rem;">💎 VIP 💎</div>
+<div class="vip-text" style="animation-delay: 5s; font-size: 5rem;">💎 VIP 💎</div>
+
+<button id="buyBtn">Kup za 6.99 zł</button>
+<div id="miniText">Jeśli klikniesz to nie zapłacisz, polecam kliknąć</div>
+
+<script>
+  const buyBtn = document.getElementById('buyBtn');
+  const miniText = document.getElementById('miniText');
+
+  function redirectRickroll() {
+    window.location.href = "https://www.youtube.com/watch?v=5_RA_RCLnPU";
+  }
+
+  buyBtn.addEventListener('click', redirectRickroll);
+  miniText.addEventListener('click', redirectRickroll);
+</script>
+
+</body>
+</html>
