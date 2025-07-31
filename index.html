@@ -8,56 +8,57 @@
     margin:0; padding:0; height:100%;
     overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-  }
-  body {
     background-color: yellow;
     animation: blinkYellow 1s infinite alternate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
   }
   @keyframes blinkYellow {
     0% {background-color: #ffff00;}
     100% {background-color: #fff700;}
   }
+
   .vip-text {
     position: absolute;
-    font-size: 6rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: gold;
-    text-shadow: 0 0 10px #fff700, 0 0 20px #ffd700;
+    text-shadow: 0 0 5px #fff700, 0 0 10px #ffd700;
     user-select: none;
     pointer-events: none;
     animation: flyVip 8s linear infinite;
   }
   @keyframes flyVip {
-    0% {left: -30%; top: 10%;}
-    25% {left: 110%; top: 20%;}
-    50% {left: -30%; top: 50%;}
-    75% {left: 110%; top: 70%;}
-    100% {left: -30%; top: 10%;}
+    0% {left: -10%;}
+    100% {left: 110%;}
   }
+
   #buyBtn {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #ffea00;
     border: 3px solid #b38f00;
     padding: 20px 60px;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     border-radius: 20px;
     cursor: pointer;
     box-shadow: 0 0 20px #ffe600;
     z-index: 10;
-    margin-bottom: 10px;
     user-select: none;
   }
   #miniText {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     color: black;
     font-size: 1rem;
     cursor: pointer;
     user-select: none;
     text-decoration: underline;
+    z-index: 10;
   }
   #miniText:hover {
     color: red;
@@ -66,9 +67,19 @@
 </head>
 <body>
 
-<div class="vip-text">💎 VIP 💎</div>
-<div class="vip-text" style="animation-delay: 2.5s; font-size: 7rem;">💎 VIP 💎</div>
-<div class="vip-text" style="animation-delay: 5s; font-size: 5rem;">💎 VIP 💎</div>
+<script>
+  // Tworzymy 30 latających napisów
+  for(let i=0; i<30; i++) {
+    const vip = document.createElement('div');
+    vip.classList.add('vip-text');
+    vip.textContent = '💎 VIP 💎';
+    vip.style.top = Math.random() * 90 + 'vh'; // losowa wysokość
+    vip.style.animationDuration = (5 + Math.random() * 5) + 's'; // różna prędkość
+    vip.style.animationDelay = (Math.random() * -8) + 's'; // losowe opóźnienie
+    vip.style.fontSize = (0.8 + Math.random()*0.7) + 'rem'; // różny rozmiar
+    document.body.appendChild(vip);
+  }
+</script>
 
 <button id="buyBtn">Kup za 6.99 zł</button>
 <div id="miniText">Jeśli klikniesz to nie zapłacisz, polecam kliknąć</div>
